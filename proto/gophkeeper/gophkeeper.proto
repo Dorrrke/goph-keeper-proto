@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+package gophkeeper;
+
+option go_package = "gophkeeper.gophkeeper.v1;gophkeeper";
+
+service GophKeeper {
+    rpc SignIn (SingInRequest) returns (SignInResponse);
+    rpc SignUp (SignUpRequest) returns (SignUpResponse);
+    rpc SaveAuth (SaveAuthRequest) returns (SaveAuthResponse);
+    rpc SaveCard (SaveCardRequest) returns (SaveCardResponse);
+    rpc SaveText (SaveTextRequest) returns (SaveTextResponse);
+    rpc SaveBin (SaveBinRequest) returns (SaveBinResponse);
+    rpc GetAllAuth (GetAllAuthRequest) returns (GetAllAuthResponse);
+    rpc GetAllCards (GetAllCardsRequest) returns (GetAllCardsResponse);
+    rpc GetAllText (GetAllTextRequest) returns (GetAllTextResponse);
+    rpc GetAllBin (GetAllBinRequest) returns (GetAllBinResponse);
+    rpc GetAuthByName (GetAuthByNameRequest) returns (GetAuthByNameResponse);
+    rpc GetCardByName (GetCardByNameRequest) returns (GetCardByNameResponse);
+    rpc GetTextByName (GetTextByNameRequest) returns (GetTextByNameResponse);
+    rpc GetBinByName (GetBinByNameRequest) returns (GetBinByNameResponse);
+    rpc DeleteAuthByName (DeleteAuthByNameRequest) returns (DeleteAuthByNameResponse);
+    rpc DeleteCardByName (DeleteCardByNameRequest) returns (DeleteCardByNameResponse);
+    rpc DeleteTextByName (DeleteTextByNameRequest) returns (DeleteTextByNameResponse);
+    rpc DeleteBinByName (DeleteBinByNameRequest) returns (DeleteBinByNameResponse);
+    rpc SyncDB (SyncDBRequest) returns (SyncDBResponse);
+}
+
+message Card {
+   string name = 1;
+   string number = 2;
+   string date = 3;
+   string cvv = 4;
+}
+
+message Auth {
+   string name = 1;
+   string login = 2;
+   string password = 3;
+}
+
+message Text {
+   string name = 1;
+   string data = 2;
+}
+
+message BinData {
+   string name = 1;
+   bytes data = 2;
+}
+
+ message SingInRequest {
+    string login = 1;
+    string password = 2;
+ }
+ message SignInResponse {}
+
+
+ message SignUpRequest {
+    string login = 1;
+    string password = 2;
+ }
+  message SignUpResponse {}
+
+
+  message SaveAuthRequest {
+   Auth data = 1;
+  }
+  message SaveAuthResponse {}
+
+
+  message SaveCardRequest {
+   Card data = 1;
+  }
+  message SaveCardResponse {}
+
+
+  message SaveTextRequest {
+   Text data = 1;
+  }
+  message SaveTextResponse {}
+
+
+  message SaveBinRequest {
+   BinData data = 1;
+  }
+  message SaveBinResponse {}
+
+
+  message GetAllAuthRequest {}
+  message GetAllAuthResponse {
+   repeated Auth authArr = 1;
+  }
+
+
+  message GetAllCardsRequest {}
+  message GetAllCardsResponse {
+   repeated Card cardArr = 1;
+  }
+
+  message GetAllTextRequest {}
+  message GetAllTextResponse {
+   repeated Text textArr = 1;
+  }
+
+  message GetAllBinRequest {}
+  message GetAllBinResponse {
+   repeated BinData binArr = 1;
+  }
+
+  message GetAuthByNameRequest {
+   string name = 1;
+  }
+  message GetAuthByNameResponse {
+   Auth data = 1;
+  }
+
+  message GetCardByNameRequest {
+   string name = 1;
+  }
+  message GetCardByNameResponse {
+   Card data = 1;
+  }
+
+  message GetTextByNameRequest {
+   string name = 1;
+  }
+  message GetTextByNameResponse {
+   Text data = 1;
+  }
+
+  message GetBinByNameRequest {
+   string name = 1;
+  }
+  message GetBinByNameResponse {
+   BinData data = 1;
+  }
+
+  message DeleteAuthByNameRequest {
+   string name = 1;
+  }
+  message DeleteAuthByNameResponse {}
+
+  message DeleteCardByNameRequest {
+   string name = 1;
+  }
+  message DeleteCardByNameResponse {}
+
+  message DeleteTextByNameRequest {
+   string name = 1;
+  }
+  message DeleteTextByNameResponse {}
+
+  message DeleteBinByNameRequest {
+   string name = 1;
+  }
+  message DeleteBinByNameResponse {}
+
+  message SyncDBRequest {
+   string name = 1;
+  }
+  message SyncDBResponse {}
